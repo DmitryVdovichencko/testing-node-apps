@@ -4,7 +4,7 @@ import {UnauthorizedError} from 'express-jwt'
 import errorMiddleware from '../error-middleware'
 
 
-const createRes = (overrides = {}) => ({json: jest.fn(() => createRes), status: jest.fn(() => createRes), ...overrides})
+//const createRes = (overrides = {}) => ({json: jest.fn(() => createRes), status: jest.fn(() => createRes), ...overrides})
 // 🐨 Write a test for the UnauthorizedError case
 test('testing UnauthorizedError case', () => {
   // const res = createRes();
