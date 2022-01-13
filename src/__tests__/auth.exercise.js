@@ -44,8 +44,13 @@ test('auth flow', async () => {
   // 📜 https://jestjs.io/docs/en/expect#expectanyconstructor
   // 📜 https://jestjs.io/docs/en/expect#toequalvalue
   console.log(registerResponse)
-  expect(registerResponse.user.username).toEqual(username)
-  expect(registerResponse.user).toHaveProperty('token')
+	expect(registerResponse.user).toEqual({
+		id:expect.any(String),
+		token:expect.any(String),
+		username
+	})
+  // expect(registerResponse.user.username).toEqual(username)
+  // expect(registerResponse.user).toHaveProperty('token')
 
   // login
   // 🐨 use axios.post to post the username and password again, but to the login endpoint
@@ -55,8 +60,9 @@ test('auth flow', async () => {
   // 💰 tip: the data you get back is exactly the same as the data you get back
   // from the registration call, so this can be done really easily by comparing
   // the data of those results with toEqual
-  expect(loginResponse.user.username).toEqual(username)
-  expect(loginResponse.user).toHaveProperty('token')
+  // expect(loginResponse.user.username).toEqual(username)
+  // expect(loginResponse.user).toHaveProperty('token')
+	expect(loginResponse.user).toEqual(registerResponse.user)
   // authenticated request
   // 🐨 use axios.get(url, config) to GET the user's information
   // 💰 http://localhost:8000/api/auth/me
